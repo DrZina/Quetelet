@@ -1,0 +1,16 @@
+Package: mypackage
+Title: Local associations to supplement Chi-squared analysis  
+Version: 0.0.0.1
+Authors@R: 
+    person("Zina", "Taran", , "ztaran@gmail.com", role = c("aut", "cre"), 
+    comment = c(ORCID = "0000-0001-6955-9820")
+    person("Boris","Mirkin", , , role=c("aut"),comment = c(ORCID = "0000−0001−5470−8635"))
+Description: Quetelet coefficients of association provide directional evaluation
+    of relationships within the contiingency table thus adding understanding
+    to Chi-square analysis. Chi-square only tells us if altogether there are 
+    some dependencies somewhere. This package will show you what exactly they 
+    are.
+License: `use_mit_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
