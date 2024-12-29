@@ -1,3 +1,15 @@
-# Quetelet
-This script calculates Quetelet's coefficients, standardized residuals and phi-square statistics as a measures of association in a contingecy table. (see Mirkin's reference to be inserted later).
-The input to it is a contingency table with row and column labels saved as a .cvs file.
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# Analysis of contingency tables
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+This package provides the calculations of Quetelet coefficients for the
+analysis of contingency tables based on Mirkin (2001, 2023). It requires
+input of a contingency table in .csv format
+
+This work is still in progress. Zina Taran
+
+echo “A line I wrote on my local computer” \>\> README.md git status
