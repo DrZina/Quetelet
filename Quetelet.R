@@ -1,8 +1,10 @@
 ##This program reads a .csv file containing a contingency table with variable names in the first row and first column
 ##Then calculates Quetelet coefficients
 ##Replace the name of the input file with the name of your own input file in the line below
-mytable<-read.csv("Data/falls.csv", header = TRUE, row.names=1)
-#str(mytable) #use this if wishing to check what's reading from the file
+# Prompt user for file path
+file_path <- readline("Enter the path to your data file: ")
+mytable<-read.csv(file_path, header = TRUE, row.names=1)
+str(mytable) #use this if wishing to check what's reading from the file
 cols<-colnames(mytable)
 rows<-rownames(mytable)
 Total_rows<-rowSums(mytable)
@@ -114,7 +116,7 @@ sneground<-round(sneg, digits=1)
 spos<-sum(quetrplusord$`Phi-decomposition`)#sum of positive Phi-dec values
 sposround<-round(spos, digits=1)
 ##print("Chi-square")
-chi1<-sum(phisq)*sum(mytable)
+# THIS IS AN ERROR phisq not found!!! chi1<-sum(phisq)*sum(mytable)
 testframe<-as.data.frame(mytable)
 ##assembling all to print
 print ("Contingency Table", quote = FALSE)
