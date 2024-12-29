@@ -1,6 +1,5 @@
 ##This program reads a .csv file containing a contingency table with variable names in the first row and first column
 ##Then calculates Quetelet coefficients
-##Replace the name of the input file with the name of your own input file in the line below
 # Prompt user for file path
 file_path <- readline("Enter the path to your data file: ")
 mytable<-read.csv(file_path, header = TRUE, row.names=1)
