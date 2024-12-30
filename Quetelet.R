@@ -4,12 +4,15 @@
 file_path <- readline("Enter the path to your data file: ")
 mytable<-read.csv(file_path, header = TRUE, row.names=1)
 str(mytable) #use this if wishing to check what's reading from the file
+
+##for print and various further manipulations, creating vectors of row and column names
 cols<-colnames(mytable)
 rows<-rownames(mytable)
 Total_rows<-rowSums(mytable)
 Total<-Total_rows
 Total_c<-colSums(mytable)
 Tottot<-mytable
+
 ## Adding Totals to row and column for printing purposes.
 ## The Tottot table is the contingency table with totals, the first to print
 ## Any sorting that is desired will need to omit the Totals row
@@ -17,7 +20,8 @@ Tottot<-cbind(mytable,Total)
 trn<-c(rownames(Tottot),"Total")
 Tottot<-rbind(Tottot,colSums(Tottot))
 rownames(Tottot)<-trn
-##Chi-square
+
+##Chi-square. Consider moving somewhere else!
 #print(chisq.test(mytable))
 ##to clarify the significance level
 chisq<-chisq.test(mytable)
@@ -25,13 +29,18 @@ chip<-chisq$p.value
 rnum<-nrow(mytable)
 cnum<-ncol(mytable)
 testpr<-chisq$expected #saving the expected values for further tests
-#Calculating Probabilities table called prob1
+
+#Calculating Relative Frequencies table called prob1
 prob1<-mytable/sum(mytable) 
 marg_r<-rowSums(prob1) ##Row Margins
 marg_c<-colSums(prob1) ##Column Margins
 prob1tot<-Tottot/sum(mytable)
 prob1round<-round(prob1, digits=3)
 prob1totround<-round(prob1tot, digits=3) #to print as relative frequencies
+
+#Calculating Quetelet
+
+
 prob_exp<-prob1 #creating table of expected frequencies
 for (i in 1:rnum){
    for(j in 1:cnum){
@@ -52,7 +61,20 @@ mph<-round(mph, digits=3)
 dfph<-(cnum-1)*(rnum-1) #degrees of freedom for Phi-square
 ##Quetelet coefficient
 quet1<-prob1/prob_exp-1
-quet1round<-round(quet1, digits=3)
+
+   #Quetelet coefficients in percent
+   quet1perc<-quet1*100
+   quet1round<-round(quet1perc, digits=3)
+
+##Flows
+##Exploring the sign patterns of Quetelet coefficients
+ flow<-sign(quet1)
+ ##this should be the function to do it, but it does not do what it 
+ ##is supposed to do, turning NAs istead of 0 
+ ##flow_pos<- pmax(flow,-1, 0,na.rm=TRUE)
+ ##so this instead for now
+ flow_pos=(flow+1)/2
+ flow_neg <- (flow-1)/2
 ## Reformatting the table of Quetelet coefficients into pairs 
 ltot<-cnum*rnum
 qt2<-vector("numeric",length = ltot)
