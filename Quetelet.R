@@ -61,7 +61,6 @@ mph<-round(mph, digits=3)
 dfph<-(cnum-1)*(rnum-1) #degrees of freedom for Phi-square
 ##Quetelet coefficient
 quet1<-prob1/prob_exp-1
-
    #Quetelet coefficients in percent
    quet1perc<-quet1*100
    quet1round<-round(quet1perc, digits=3)
@@ -71,11 +70,13 @@ quet1<-prob1/prob_exp-1
  flow<-sign(quet1)
  ##this should be the function to do it, but it does not do what it 
  ##is supposed to do, turning NAs istead of 0 
- ##flow_pos<- pmax(flow,-1, 0,na.rm=TRUE)
+ ##flow_pos<- pmax(flow,-1, 0, na.rm=TRUE)
  ##so this instead for now
  flow_pos=(flow+1)/2
  flow_neg <- (flow-1)/2
-## Reformatting the table of Quetelet coefficients into pairs 
+
+ ## Reformatting the table of Quetelet coefficients into pairs for future 
+ ##printing use 
 ltot<-cnum*rnum
 qt2<-vector("numeric",length = ltot)
 freq1<-cbind.data.frame(cols,rows,qt2)
@@ -90,11 +91,18 @@ for (i in 1:rnum){
    }
 }
 ##Phi-sq and Relative Quetelet as Quetelet * rel. frequency divided by Phi-sq times 100
-quetr<-quet1
-quetr2<-prob1*quet1
-sph<-sum(quetr2)
-sph_round<-round(sph, digits=3)
-pph<-100*sph/mph
+  ##make a copy of quet1 just in case REMOVE IF UNNEEDED!
+  quetr<-quet1
+
+  ##Relative Quetelet matrix
+  quetr2<-prob1*quet1
+
+  ##Sum of all the values of that matrix is the PHI-SQUARE
+  sph<-sum(quetr2)
+    sph_round<-round(sph, digits=3)
+ 
+  ##Percentage of it to the mph, maximal possible value of PHI-SQUARE calculated above  
+    pph<-100*sph/mph
 pph<-round(pph, digits=1)
 for (i in 1:rnum){
    for(j in 1:cnum){
