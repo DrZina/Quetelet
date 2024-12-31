@@ -103,19 +103,21 @@ for (i in 1:rnum){
  
   ##Percentage of it to the mph, maximal possible value of PHI-SQUARE calculated above  
     pph<-100*sph/mph
-pph<-round(pph, digits=1)
+      pph<-round(pph, digits=1)
+      
+##PHI-Decomposition table quetr    
 for (i in 1:rnum){
    for(j in 1:cnum){
       quetr[i, j]=((quet1[i,j]*prob1[i,j])*100/sph)
    }
 }
-Total<-rowSums(quetr)
-quetr1<-cbind(quetr,Total)
-Total<-colSums(quetr1)
-quetr1<-rbind(quetr1, Total)
-rownames(quetr1)<-trn
-#roundg digits for quetr1
-quetr1round<-round(quetr1, digits=3)
+   Total<-rowSums(quetr)
+   quetr1<-cbind(quetr,Total)
+   Total<-colSums(quetr1)
+   quetr1<-rbind(quetr1, Total)
+   rownames(quetr1)<-trn
+    #roundg digits for quetr1
+    quetr1round<-round(quetr1, digits=3)
 ## Reformatting the quetr table of Phi-decomposition into pairs 
 ##the first two lines are already repeats; we made gt2 before
 ltot<-cnum*rnum
