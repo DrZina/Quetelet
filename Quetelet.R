@@ -34,6 +34,8 @@ testpr<-chisq$expected #saving the expected values for further tests
 prob1<-mytable/sum(mytable) 
 marg_r<-rowSums(prob1) ##Row Margins
 marg_c<-colSums(prob1) ##Column Margins
+
+#prob1 is straight up probabilities, and prob1tot has tow and column totals
 prob1tot<-Tottot/sum(mytable)
 prob1round<-round(prob1, digits=3)
 prob1totround<-round(prob1tot, digits=3) #to print as relative frequencies
@@ -60,14 +62,28 @@ if (rnum > cnum) {
 mph<-round(mph, digits=3)
 dfph<-(cnum-1)*(rnum-1) #degrees of freedom for Phi-square
 ##Quetelet coefficient
-quet1<-prob1/prob_exp-1
+quet1 <- prob1/prob_exp-1
    #Quetelet coefficients in percent
-   quet1perc<-quet1*100
-   quet1round<-round(quet1perc, digits=3)
+   quet1perc <- quet1*100
+   quet1round <- round(quet1perc, digits=3)
+print(quet1)
+
+#weighted Quetelet: Quetelet indices times probabilities quetw
+quetw <- quet1*prob1
+Total_wq_r<-rowSums(quetw)
+quetw1<-cbind(quetw,Total_wq_r)
+Total_wq_c<-colSums(quetw1)
+quetw1<-rbind(quetw1, Total_wq_c)
+rownames(quetw1)<-trn
+##quetw1f <- format(quetw1, 3, padding = 2, scientific = FALSE) this introduces asis format
+quetw1round<-round(quetw1, digits=4)
 
 ##Flows
 ##Exploring the sign patterns of Quetelet coefficients
  flow<-sign(quet1)
+ flow_pos<- pmax(flow,-1, 0, na.rm=TRUE)
+ flow_pos
+
  ##this should be the function to do it, but it does not do what it 
  ##is supposed to do, turning NAs istead of 0 
  ##flow_pos<- pmax(flow,-1, 0, na.rm=TRUE)
@@ -177,7 +193,12 @@ print("   ",quote = FALSE)
 print("Structural patterns", quote="FALSE")
 print(flow_pos)
 print (flow_neg)
-print("Phi-square decomposition, percent", quote = FALSE)
+#print("Phi-square decomposition, percent", quote = FALSE)
+print("Matrix of weighted Quetelet indices pq", quote=False)
+quetw1round
+print("Pearson-Quetelet decomposition", quote = FALSE)
+
+print("contributions to the chi-squared association value, percent", quote = FALSE)
 print(quetr1round)
 print("   ",quote = FALSE)
 print("Positive values in Phi-decomposition above 20%", quote=FALSE)
