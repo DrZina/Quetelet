@@ -7,7 +7,7 @@
 #'
 #' @return A data frame read from the specified file.
 #' @examples
-#' data <- 01_get_data()
+#' data <- get_data()
 get_data <- function() {
    file_path <- readline(prompt = "Enter the path to your CSV file: ")
    if (file.exists(file_path)) {

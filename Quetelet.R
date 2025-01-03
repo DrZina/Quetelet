@@ -72,7 +72,7 @@ quet1<-prob1/prob_exp-1
  ##is supposed to do, turning NAs istead of 0 
  ##flow_pos<- pmax(flow,-1, 0, na.rm=TRUE)
  ##so this instead for now
- flow_pos=(flow+1)/2
+ flow_pos <- (flow+1)/2
  flow_neg <- (flow-1)/2
 
  ## Reformatting the table of Quetelet coefficients into pairs for future 
@@ -164,9 +164,9 @@ if (chip < .01) {
 } else { 
    print ("Not significant at 95% level", quote = FALSE)
 }}
-print("Pearson Residuals", quote = FALSE)
-print(res1round)
-print("   ",quote = FALSE)
+#print("Pearson Residuals", quote = FALSE)
+#print(res1round)
+#print("   ",quote = FALSE)
 print("Quetelet indexes", quote = FALSE)
 print("   ",quote = FALSE)
 print(paste("Phi-square ", sph_round), quote = FALSE)
@@ -174,6 +174,9 @@ print(paste(pph, " % of Maximum Phi-Square of ", mph), quote = FALSE)
 print("   ",quote = FALSE)
 print(quet1round)
 print("   ",quote = FALSE)
+print("Structural patterns", quote="FALSE")
+print(flow_pos)
+print (flow_neg)
 print("Phi-square decomposition, percent", quote = FALSE)
 print(quetr1round)
 print("   ",quote = FALSE)
