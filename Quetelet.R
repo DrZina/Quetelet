@@ -5,6 +5,13 @@ file_path <- readline("Enter the path to your data file: ")
 mytable<-read.csv(file_path, header = TRUE, row.names=1)
 str(mytable) #use this if wishing to check what's reading from the file
 
+##for printing, ask user input for number of decimals
+# Get user input for number of decimal places
+digits <- as.integer(readline("Enter the number of decimal places to round to: ")) 
+# Round data to specified decimal places
+##rounded_data <- round(data, digits = digits) 
+ 
+
 ##for print and various further manipulations, creating vectors of row and column names
 cols<-colnames(mytable)
 rows<-rownames(mytable)
