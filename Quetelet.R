@@ -194,7 +194,7 @@ print("Structural patterns", quote="FALSE")
 print(flow_pos)
 print (flow_neg)
 #print("Phi-square decomposition, percent", quote = FALSE)
-print("Matrix of weighted Quetelet indices pq", quote=False)
+print("Matrix of weighted Quetelet indices pq", quote=FALSE)
 quetw1round
 print("Pearson-Quetelet decomposition", quote = FALSE)
 
