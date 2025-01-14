@@ -1,7 +1,8 @@
+#' @export
 #' Get User Input Data File
 #'
 #' Prompts the user to input a CSV file and reads the data.
-#' 
+#'
 #' The file must be in the form of a contingency table with names of categories
 #' in the first row and first column
 #'
